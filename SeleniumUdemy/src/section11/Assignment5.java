@@ -1,9 +1,6 @@
 package section11;
 
-import java.util.Iterator;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,20 +18,19 @@ public class Assignment5 {
 		
 		driver.findElement(By.linkText("Nested Frames")).click();
 		
+		//Access frame by WebElement
 		WebElement frameTop = driver.findElement(By.name("frame-top"));
 		driver.switchTo().frame(frameTop);
 		
-		WebElement frameMiddle = driver.findElement(By.name("frame-middle"));
-		driver.switchTo().frame(frameMiddle);
+		//Access frame by name
+		driver.switchTo().frame("frame-middle");
+		
+		//driver.switchTo().fra
 		
 		//Get text
 		System.out.println(driver.findElement(By.xpath("//div[@id='content']")).getText());
-		
-	
+
 		
 	}
 	
-	
-	
-
 }

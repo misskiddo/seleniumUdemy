@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class Frames {
 
@@ -15,12 +16,18 @@ public class Frames {
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://jqueryui.com/droppable/");
 		
-		WebElement frame1 = driver.findElement(By.className("demo_frame"));
+	   	
+	//	driver.switchTo().frame(driver.findElement(By.cssSelector("iframe[class='demo-frame']")));
+		driver.switchTo().frame(0);
 		
-		driver.switchTo().frame(frame1);
+		WebElement drag = driver.findElement(By.id("draggable"));
+		WebElement drop = driver.findElement(By.id("droppable"));
 		
-		driver.findElement(By.id("draggable")).click();;
+		Actions a = new Actions(driver);
+		a.dragAndDrop(drag, drop).build().perform();
 		
+		// Leave the frame and come back to the original window
+		driver.switchTo().defaultContent();
 	}
 
 }

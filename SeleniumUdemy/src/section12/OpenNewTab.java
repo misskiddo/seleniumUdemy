@@ -1,11 +1,13 @@
 package section12;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 
 public class OpenNewTab {
 
@@ -22,12 +24,23 @@ public class OpenNewTab {
 				+ firstColumnFooter.findElements(By.tagName("a")).size());
 
 		// Click on each link and check if the pages are opening
+		String clickOnLinkTab = Keys.chord(Keys.CONTROL, Keys.ENTER);
+				
 		
 		for (int i =1 ;i<firstColumnFooter.findElements(By.tagName("a")).size() ; i++ ) {
-			String clickOnLinkTab = Keys.chord(Keys.CONTROL, Keys.ENTER);
-			
+					
 			firstColumnFooter.findElements(By.tagName("a")).get(i).sendKeys(clickOnLinkTab);
-			//firstColumnFooter.findElements(By.tagName("a")).get(i).click()
+		}
+		// Get all the tabs
+		
+		Set<String> ids= driver.getWindowHandles();
+		Iterator<String> it = ids.iterator();
+		
+		while (it.hasNext()) {
+			String currentPage = it.next();
+			driver.switchTo().window(currentPage);
+			System.out.println("Title page: " + driver.getTitle());
+	
 		}
 		
 

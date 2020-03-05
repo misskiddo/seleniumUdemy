@@ -15,7 +15,7 @@ public class SeleniumGrid {
 		
 		DesiredCapabilities dc = new DesiredCapabilities();
 		
-		dc.setBrowserName("Firefox");
+		dc.setBrowserName("chrome");
 		dc.setPlatform(Platform.LINUX);
 		
 		//RemoteWebDriver( server, desideredCapabilities)
@@ -26,6 +26,12 @@ public class SeleniumGrid {
 		driver.get("http://www,google.es");
 		
 
+		/* java -Dwebdriver.chrome.driver="geckodriver.exe" -jar selenium-server.jar -role webdriver -hub http://10.151.126.49:4444/grid/register -port 5566
+		*/
+		
 	}
 
 }
+
+		
+		

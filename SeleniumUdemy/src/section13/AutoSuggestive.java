@@ -17,23 +17,28 @@ public class AutoSuggestive {
 		WebElement inputField = driver.findElement(By.name("fromPlaceName"));
 		
 		inputField.sendKeys("BENG");
-		
-		
+
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		
 		String script = "return document.getElementById(\"fromPlaceName\").value;";
 		
 		String text = (String) js.executeScript(script);
 		
+		int i =0;
+		
 		//Verify that Bengaluru Internation Port is displayed in the dropdown
 		
-		while (!text.equalsIgnoreCase("Bengaluru Internation airPort")) {
-			text = (String) js.executeScript(script);
-			System.out.println(text);
+		while (!text.equalsIgnoreCase("Bengaluru Internation airPort") && i<10) {
+			i++;
 			inputField.sendKeys(Keys.ARROW_DOWN);
+			text = (String) js.executeScript(script);
+			System.out.println(i + ": " + text);	
 		}
 		
-		inputField.sendKeys(Keys.ENTER);
+
+		if (i>=10) {
+			System.out.println("City not found");
+		}
 		
 	
 	}

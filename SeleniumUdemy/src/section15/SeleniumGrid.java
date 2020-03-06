@@ -23,10 +23,14 @@ public class SeleniumGrid {
 		URL url = new URL(" http://localhost:4444/wd/hub");
 		WebDriver driver = new RemoteWebDriver( url, dc);
 		
-		driver.get("http://www,google.es");
+		driver.get("http://www.google.es");
 		
 
 		/* java -Dwebdriver.chrome.driver="geckodriver.exe" -jar selenium-server.jar -role webdriver -hub http://10.151.126.49:4444/grid/register -port 5566
+		 * 
+		 * 
+		 * 
+		 * java -Dwebdriver.chrome.driver="C:\webdrivers\chromedriver.exe" -jar selenium-server.jar -role webdriver -hub http://192.168.56.1:4444/grid/register -port 5566
 		*/
 		
 	}
